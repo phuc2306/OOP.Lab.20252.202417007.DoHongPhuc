@@ -1,7 +1,6 @@
 package hust.soict.dsai.aims.disc;
 
 public class DigitalVideoDisc {
-    private static final String String = null;
 	private String title;
     private String category;
     private String director;
@@ -47,8 +46,8 @@ public class DigitalVideoDisc {
     public float getCost() { return cost; }
     public int getId() { return id; }
     
-    public void setTitle(String title) { this.title = title; 
-    String toString() {
+    public void setTitle(String title) { this.title = title; }
+    public String toString() { {
         return "DVD - " + title + " - " + category + " - " + director + " - " + length + ": " + cost + " $";
     }}
 }

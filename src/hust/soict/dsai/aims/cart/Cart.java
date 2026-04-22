@@ -6,7 +6,7 @@ public class Cart {
     private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
     private int qtyOrdered = 0;
 
- 
+    // 1. Thêm 1 đĩa
     public void addDigitalVideoDisc(DigitalVideoDisc disc) {
         if (qtyOrdered < MAX_NUMBERS_ORDERED) {
             itemsOrdered[qtyOrdered] = disc;
@@ -17,39 +17,20 @@ public class Cart {
         }
     }
 
-    // CÁCH 1
-    public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList) {
-        for (DigitalVideoDisc disc : dvdList) {
-            if (qtyOrdered < MAX_NUMBERS_ORDERED) {
-                itemsOrdered[qtyOrdered] = disc;
-                qtyOrdered++;
-                System.out.println("The disc \"" + disc.getTitle() + "\" has been added (from array)");
-            } else {
-                System.out.println("The cart is almost full. Could not add: " + disc.getTitle());
-                break;
-            }
+    // 2. Thêm một mảng đĩa (Overloading)
+    public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList) {
+        for (int i = 0; i < dvdList.length; i++) {
+            this.addDigitalVideoDisc(dvdList[i]); 
         }
     }
 
-    //CÁCH 2--
+    // 3. Thêm 2 đĩa (Overloading)
     public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
-        if (qtyOrdered + 2 <= MAX_NUMBERS_ORDERED) {
-            addDigitalVideoDisc(dvd1);
-            addDigitalVideoDisc(dvd2);
-        } else {
-            System.out.println("The cart is almost full, cannot add both discs.");
-        }
+        this.addDigitalVideoDisc(dvd1);
+        this.addDigitalVideoDisc(dvd2);
     }
 
-
-    public float totalCost() {
-        float total = 0;
-        for (int i = 0; i < qtyOrdered; i++) {
-            total += itemsOrdered[i].getCost();
-        }
-        return total;
-    }
-
+    // 4. Xóa đĩa
     public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
         for (int i = 0; i < qtyOrdered; i++) {
             if (itemsOrdered[i] == disc) {
@@ -62,14 +43,26 @@ public class Cart {
                 return;
             }
         }
+        System.out.println("The disc was not found in the cart");
+    }
+
+    // 5. Tính tổng tiền
+    public float totalCost() {
+        float total = 0;
+        for (int i = 0; i < qtyOrdered; i++) {
+            total += itemsOrdered[i].getCost();
+        }
+        return total;
     }
     public void print() {
         System.out.println("***********************CART***********************");
         System.out.println("Ordered Items:");
+        
         for (int i = 0; i < qtyOrdered; i++) {
             System.out.println((i + 1) + ". " + itemsOrdered[i].toString());
         }
+        
         System.out.println("Total cost: " + totalCost() + " $");
         System.out.println("***************************************************");
-    } 
+    }
 }
