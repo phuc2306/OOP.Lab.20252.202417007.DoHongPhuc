@@ -1,7 +1,5 @@
-package hust.soict.dsai.aims;
+package AimsProject;
 
-import hust.soict.dsai.aims.cart.Cart;
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 
 public class Aims {
     public static void main(String[] args) {
@@ -14,6 +12,9 @@ public class Aims {
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladdin", "Animation", "John Musker", 90, 18.99f);
         DigitalVideoDisc dvd4 = new DigitalVideoDisc("The Matrix", "Action", "Wachowski", 136, 20.00f);
 
+
+System.out.println("Total DVDs created: " + DigitalVideoDisc.getNbDigitalVideoDiscs());
+}}
         // Test 1: Thêm 2 đĩa cùng lúc
         System.out.println("--- TEST: ADD 2 DVDS ---");
         anOrder.addDigitalVideoDisc(dvd1, dvd2);
