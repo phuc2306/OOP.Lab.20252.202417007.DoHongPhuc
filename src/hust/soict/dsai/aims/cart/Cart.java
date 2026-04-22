@@ -6,7 +6,7 @@ public class Cart {
     private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
     private int qtyOrdered = 0;
 
-
+ 
     public void addDigitalVideoDisc(DigitalVideoDisc disc) {
         if (qtyOrdered < MAX_NUMBERS_ORDERED) {
             itemsOrdered[qtyOrdered] = disc;
@@ -17,6 +17,38 @@ public class Cart {
         }
     }
 
+    // CÁCH 1
+    public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList) {
+        for (DigitalVideoDisc disc : dvdList) {
+            if (qtyOrdered < MAX_NUMBERS_ORDERED) {
+                itemsOrdered[qtyOrdered] = disc;
+                qtyOrdered++;
+                System.out.println("The disc \"" + disc.getTitle() + "\" has been added (from array)");
+            } else {
+                System.out.println("The cart is almost full. Could not add: " + disc.getTitle());
+                break;
+            }
+        }
+    }
+
+    //CÁCH 2--
+    public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
+        if (qtyOrdered + 2 <= MAX_NUMBERS_ORDERED) {
+            addDigitalVideoDisc(dvd1);
+            addDigitalVideoDisc(dvd2);
+        } else {
+            System.out.println("The cart is almost full, cannot add both discs.");
+        }
+    }
+
+
+    public float totalCost() {
+        float total = 0;
+        for (int i = 0; i < qtyOrdered; i++) {
+            total += itemsOrdered[i].getCost();
+        }
+        return total;
+    }
 
     public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
         for (int i = 0; i < qtyOrdered; i++) {
@@ -30,15 +62,5 @@ public class Cart {
                 return;
             }
         }
-        System.out.println("Disc not found");
-    }
-
-    // Hàm tính tổng tiền
-    public float totalCost() {
-        float total = 0;
-        for (int i = 0; i < qtyOrdered; i++) {
-            total += itemsOrdered[i].getCost();
-        }
-        return total;
     }
 }
