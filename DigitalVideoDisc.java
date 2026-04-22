@@ -7,6 +7,7 @@ public class DigitalVideoDisc {
     private int length;
     private float cost;
     private int id; 
+    private String category;
 
   
     private static int nbDigitalVideoDiscs = 0; 
@@ -28,8 +29,22 @@ public class DigitalVideoDisc {
     public String getTitle() { return title; }
     public float getCost() { return cost; }
 
- 
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public int getLength() {
+        return length;
+    }
     public static int getNbDigitalVideoDiscs() {
         return nbDigitalVideoDiscs;
+    }
+    public boolean isMatch(String title) {
+        return this.title.equalsIgnoreCase(title);
     }
 }
