@@ -6,11 +6,8 @@ public class DigitalVideoDisc {
     private String director;
     private int length;
     private float cost;
-
- 
     private int id; 
     private static int nbDigitalVideoDiscs = 0; 
-
 
     private void updateTotalAndId() {
         nbDigitalVideoDiscs++;
@@ -24,18 +21,9 @@ public class DigitalVideoDisc {
     }
 
 
-    public DigitalVideoDisc(String category, String title, float cost) {
-        this.category = category;
+    public DigitalVideoDisc(String title, String category, float cost) {
         this.title = title;
-        this.cost = cost;
-        updateTotalAndId();
-    }
-
- 
-    public DigitalVideoDisc(String director, String category, String title, float cost) {
-        this.director = director;
         this.category = category;
-        this.title = title;
         this.cost = cost;
         updateTotalAndId();
     }
@@ -50,22 +38,13 @@ public class DigitalVideoDisc {
         updateTotalAndId();
     }
 
-  
+
     public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
-
     public String getCategory() { return category; }
-    public void setCategory(String category) { this.category = category; }
-
     public String getDirector() { return director; }
-    public void setDirector(String director) { this.director = director; }
-
     public int getLength() { return length; }
-    public void setLength(int length) { this.length = length; }
-
     public float getCost() { return cost; }
-    public void setCost(float cost) { this.cost = cost; }
-
     public int getId() { return id; }
- 
+    
+    public void setTitle(String title) { this.title = title; }
 }
