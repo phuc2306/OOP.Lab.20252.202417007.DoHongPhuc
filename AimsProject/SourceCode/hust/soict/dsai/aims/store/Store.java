@@ -1,38 +1,26 @@
 package hust.soict.dsai.aims.store;
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
+
+import java.util.ArrayList;
+import hust.soict.dsai.aims.media.Media;
 
 public class Store {
-    private DigitalVideoDisc itemsInStore[];
-    private int qtyInStore = 0;
-    private static final int MAX_CAPACITY = 100;
-    public Store() {
-        itemsInStore = new DigitalVideoDisc[MAX_CAPACITY];
-    }
-    public void addDVD(DigitalVideoDisc dvd) {
-        if (qtyInStore < MAX_CAPACITY) {
-            itemsInStore[qtyInStore] = dvd;
-            qtyInStore++;
-            System.out.println("DVD '" + dvd.getTitle() + "' đã được thêm vào kho.");
+    private ArrayList<Media> itemsInStore = new ArrayList<Media>();
+
+    public void addMedia(Media media) {
+        if (!itemsInStore.contains(media)) {
+            itemsInStore.add(media);
+            System.out.println(media.getTitle() + " đã được thêm vào cửa hàng.");
         } else {
-            System.out.println("Kho hàng đã đầy, không thể thêm đĩa!");
+            System.out.println(media.getTitle() + " đã có sẵn trong cửa hàng.");
         }
     }
-    public void removeDVD(DigitalVideoDisc dvd) {
-        boolean found = false;
-        for (int i = 0; i < qtyInStore; i++) {
-            if (itemsInStore[i] == dvd) {
-                for (int j = i; j < qtyInStore - 1; j++) {
-                    itemsInStore[j] = itemsInStore[j + 1];
-                }
-                itemsInStore[qtyInStore - 1] = null;
-                qtyInStore--;
-                found = true;
-                System.out.println("DVD '" + dvd.getTitle() + "' đã được xóa khỏi kho.");
-                break;
-            }
-        }
-        if (!found) {
-            System.out.println("Không tìm thấy DVD này trong kho để xóa!");
+
+    public void removeMedia(Media media) {
+        if (itemsInStore.contains(media)) {
+            itemsInStore.remove(media);
+            System.out.println(media.getTitle() + " đã bị xóa khỏi cửa hàng.");
+        } else {
+            System.out.println("Không tìm thấy " + media.getTitle() + " trong cửa hàng.");
         }
     }
 }
