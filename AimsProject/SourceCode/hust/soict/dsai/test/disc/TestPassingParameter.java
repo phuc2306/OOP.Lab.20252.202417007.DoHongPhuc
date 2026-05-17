@@ -1,7 +1,6 @@
 package hust.soict.dsai.test.disc;
 
 import hust.soict.dsai.aims.cart.Cart;
-
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 public class TestPassingParameter {
@@ -12,13 +11,11 @@ public class TestPassingParameter {
         DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
         
-
         anOrder.addMedia(dvd1);
         anOrder.addMedia(dvd2);
         anOrder.addMedia(dvd3);
         System.out.println("Total Cost is: " + anOrder.totalCost());
         
-
         anOrder.removeMedia(dvd1); 
         System.out.println("Total Cost after removing 'The Lion King': " + anOrder.totalCost());
         
