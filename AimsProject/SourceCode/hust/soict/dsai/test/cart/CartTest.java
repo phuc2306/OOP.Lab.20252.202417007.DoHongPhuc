@@ -35,4 +35,14 @@ public class CartTest {
         System.out.println("Search by Title 'Titanic':");
         cart.searchByTitle("Titanic");
     }
+    public void sortByTitle() {
+        Collections.sort(this.itemsOrdered, Media.COMPARE_BY_TITLE_COST);
+        System.out.println("Giỏ hàng đã được sắp xếp theo Title - Cost.");
+    }
+
+    public void sortByCost() {
+        Collections.sort(this.itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+        System.out.println("Giỏ hàng đã được sắp xếp theo Cost - Title.");
+    }
+
 }
