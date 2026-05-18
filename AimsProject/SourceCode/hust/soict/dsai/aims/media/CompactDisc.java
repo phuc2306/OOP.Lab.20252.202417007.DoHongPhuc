@@ -4,14 +4,36 @@ import java.util.ArrayList;
 
 public class CompactDisc extends Disc implements Playable {
     private String artist;
-    private ArrayList<Track> tracks = new ArrayList<Track>();
-    public CompactDisc() {
-        super();
+    private ArrayList<Track> tracks; 
+    
+
+    private static int nbCompactDiscs = 0; 
+
+
+    public CompactDisc(String title) {
+        super(++nbCompactDiscs, title, null, null, 0, 0.0f);
+        this.tracks = new ArrayList<Track>(); 
     }
+
+
+    public CompactDisc(String title, String category, String artist, float cost) {
+        super(++nbCompactDiscs, title, category, null, 0, cost);
+        this.artist = artist;
+        this.tracks = new ArrayList<Track>();
+    }
+
+
+    public CompactDisc(String title, String category, String director, String artist, float cost) {
+        super(++nbCompactDiscs, title, category, director, 0, cost);
+        this.artist = artist;
+        this.tracks = new ArrayList<Track>();
+    }
+
 
     public String getArtist() {
         return artist;
     }
+
     public void addTrack(Track track) {
         if (!tracks.contains(track)) {
             tracks.add(track);
@@ -20,7 +42,6 @@ public class CompactDisc extends Disc implements Playable {
             System.out.println("Track " + track.getTitle() + " đã tồn tại trong CD!");
         }
     }
-
 
     public void removeTrack(Track track) {
         if (tracks.contains(track)) {
@@ -31,13 +52,16 @@ public class CompactDisc extends Disc implements Playable {
         }
     }
 
+
     public int getLength() {
         int totalLength = 0;
         for (Track track : tracks) {
             totalLength += track.getLength();
         }
-        return totalLength;
+        return totalLength; 
     }
+
+
     public void play() {
         System.out.println("Playing CD: " + this.getTitle());
         System.out.println("CD length: " + this.getLength());

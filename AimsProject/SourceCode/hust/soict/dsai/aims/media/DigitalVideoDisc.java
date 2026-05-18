@@ -2,42 +2,30 @@ package hust.soict.dsai.aims.media;
 
 public class DigitalVideoDisc extends Disc implements Playable {
 
+
     private static int nbDigitalVideoDiscs = 0; 
 
+
     public DigitalVideoDisc(String title) {
-        this.setTitle(title); 
-        nbDigitalVideoDiscs++;
-        this.setId(nbDigitalVideoDiscs);
+
+        super(++nbDigitalVideoDiscs, title, null, null, 0, 0.0f);
     }
     
+
     public DigitalVideoDisc(String category, String title, float cost) {
-        this.setCategory(category);
-        this.setTitle(title);
-        this.setCost(cost);
-        nbDigitalVideoDiscs++;
-        this.setId(nbDigitalVideoDiscs);
+        super(++nbDigitalVideoDiscs, title, category, null, 0, cost);
     }
     
 
     public DigitalVideoDisc(String director, String category, String title, float cost) {
-        this.setDirector(director); 
-        this.setCategory(category);
-        this.setTitle(title);
-        this.setCost(cost);
-        nbDigitalVideoDiscs++;
-        this.setId(nbDigitalVideoDiscs);
+        super(++nbDigitalVideoDiscs, title, category, director, 0, cost);
     }
 
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-        this.setTitle(title);
-        this.setCategory(category);
-        this.setDirector(director); 
-        this.setLength(length);     
-        this.setCost(cost);
-        nbDigitalVideoDiscs++;
-        this.setId(nbDigitalVideoDiscs);
+        super(++nbDigitalVideoDiscs, title, category, director, length, cost);
     }
+
 
 
     public String toString() {
@@ -47,6 +35,8 @@ public class DigitalVideoDisc extends Disc implements Playable {
     public boolean isMatch(String title) {
         return this.getTitle().toLowerCase().contains(title.toLowerCase());
     }
+    
+
     public void play() {
         System.out.println("Playing DVD: " + this.getTitle());
         System.out.println("DVD length: " + this.getLength());
