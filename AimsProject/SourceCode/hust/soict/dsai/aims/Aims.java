@@ -5,7 +5,6 @@ import hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 public class Aims {
     public static void main(String[] args) {
-
         Cart anOrder = new Cart();
 
 
@@ -20,7 +19,7 @@ public class Aims {
         anOrder.addMedia(dvd3);
         anOrder.addMedia(dvd4);
 
-
+ 
         System.out.println("\n--- Giỏ hàng hiện tại ---");
         anOrder.print();
 
