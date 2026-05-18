@@ -32,15 +32,6 @@ public class Cart {
         return total;
     }
 
-    public void print() {
-        System.out.println("***********************CART***********************");
-        System.out.println("Ordered Items:");
-        for (int i = 0; i < itemsOrdered.size(); i++) {
-            System.out.println((i + 1) + ". " + itemsOrdered.get(i).toString());
-        }
-        System.out.println("Total cost: " + this.totalCost() + " $");
-        System.out.println("***************************************************");
-    }
 
     public void searchById(int id) {
         boolean found = false;
@@ -67,6 +58,15 @@ public class Cart {
         if (!found) {
             System.out.println("No match found for title: " + title);
         }
+    }
+    public void print() {
+        System.out.println("***********************CART***********************");
+        System.out.println("Ordered Items:");
+        for (int i = 0; i < itemsOrdered.size(); i++) {
+            System.out.println((i + 1) + ". " + itemsOrdered.get(i).toString());
+        }
+        System.out.println("Total cost: " + totalCost() + " $");
+        System.out.println("***************************************************");
     }
 }
     
