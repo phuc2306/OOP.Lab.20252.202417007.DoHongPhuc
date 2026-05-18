@@ -1,9 +1,9 @@
-package SourceCode.hust.soict.dsai.aims.media;
+package hust.soict.dsai.aims.media;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestPolymorphism {
+public class Testpolymorphism {
     public static void main(String[] args) {
 
         List<Media> mediae = new ArrayList<Media>();
