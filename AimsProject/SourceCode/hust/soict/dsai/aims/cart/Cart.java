@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import hust.soict.dsai.aims.media.Media;
 
 public class Cart {
+	public ArrayList getItemsOrdered() {
+		return itemsOrdered;
+		}
     private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
 
     public void addMedia(Media media) {
