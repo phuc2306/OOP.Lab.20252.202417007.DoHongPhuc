@@ -39,14 +39,18 @@ public abstract class Media {
     public void setCost(float cost) {
         this.cost = cost;
     }
+    @Override
     public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof Media)) {
-            return false;
-        }
-        Media media = (Media) obj;
-        return this.title != null && this.title.equals(media.getTitle());
+    if (this == obj) {
+    return true;
+    }
+    if (!(obj instanceof Media)) {
+    return false;
+    }
+    Media other = (Media) obj;
+    if (this.getTitle() != null && this.getTitle().equals(other.getTitle())) {
+    return true;
+    }
+    return false;
     }
 }
