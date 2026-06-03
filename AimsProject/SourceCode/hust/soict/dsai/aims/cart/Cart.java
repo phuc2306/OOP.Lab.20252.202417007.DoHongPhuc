@@ -11,13 +11,13 @@ public ObservableList<Media> getItemsOrdered() {
     return itemsOrdered;
 }
 
-public void addMedia(Media media) {
-    if (!itemsOrdered.contains(media)) {
-        itemsOrdered.add(media);
-        System.out.println(media.getTitle() + " da duoc them vao gio hang.");
-    } else {
-        System.out.println(media.getTitle() + " da co san trong gio hang.");
-    }
+public void addMedia(hust.soict.dsai.aims.media.Media m) throws hust.soict.dsai.aims.exception.LimitExceededException {
+if (itemsOrdered.size() < 20) {
+itemsOrdered.add(m);
+System.out.println(m.getTitle() + " da duoc them vao gio.");
+} else {
+throw new hust.soict.dsai.aims.exception.LimitExceededException("ERROR: The number of media has reached its limit");
+}
 }
 
 public void removeMedia(Media media) {
