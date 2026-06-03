@@ -3,19 +3,23 @@ package hust.soict.dsai.aims.screen;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.media.Playable;
+import hust.soict.dsai.aims.cart.Cart; 
 
 public class MediaStore extends JPanel {
     private Media media;
     
-    public MediaStore(Media media) {
+    public MediaStore(Media media, Cart cart) {
         this.media = media;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
@@ -29,9 +33,19 @@ public class MediaStore extends JPanel {
         JPanel container = new JPanel();
         container.setLayout(new FlowLayout(FlowLayout.CENTER));
         
-        container.add(new JButton("Add to cart"));
+        JButton btnAddToCart = new JButton("Add to cart");
+        btnAddToCart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cart.addMedia(media);
+                JOptionPane.showMessageDialog(null, media.getTitle() + " da duoc them vao gio.");
+            }
+        });
+        container.add(btnAddToCart);
+        
         if (media instanceof Playable) {
-            container.add(new JButton("Play"));
+            JButton btnPlay = new JButton("Play");
+            container.add(btnPlay);
         }
         
         this.add(Box.createVerticalGlue());

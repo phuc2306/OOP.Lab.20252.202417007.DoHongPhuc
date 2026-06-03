@@ -50,11 +50,16 @@ private RadioButton radioBtnFilterId;
 @FXML
 private RadioButton radioBtnFilterTitle;
 
+@FXML
+private javafx.scene.control.Label lblTotal;
+
+@FXML
+private javafx.scene.control.Button btnPlaceOrder;
+
 public CartScreenController(Cart cart) {
 super();
 this.cart = cart;
 }  
-
 @FXML
 private void initialize() {
 colMediaTitle.setCellValueFactory(new PropertyValueFactory<Media, String>("title"));
@@ -88,6 +93,10 @@ tblMedia.getSelectionModel().selectedItemProperty().addListener(
         }
     }
 );
+updateTotal();
+cart.getItemsOrdered().addListener((javafx.collections.ListChangeListener) c -> {
+updateTotal();
+});
 }
 
 void updateButtonBar(Media media) {
@@ -136,5 +145,25 @@ return true;
     }
 });
 }
+void updateTotal() {
+float total = 0;
+for (Media media : cart.getItemsOrdered()) {
+total += media.getCost();
+}
+lblTotal.setText(total + " $");
+}
 
+@FXML
+void btnPlaceOrderPressed(javafx.event.ActionEvent event) {
+javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+alert.setTitle("Place Order");
+alert.setHeaderText("Order created successfully!");
+alert.setContentText("Your cart has been cleared.");
+alert.showAndWait();
+cart.getItemsOrdered().clear();
+}
+@FXML
+void btnViewStorePressed(javafx.event.ActionEvent event) {
+System.out.println("se chuyen sang man hinh store sau");
+}
 }

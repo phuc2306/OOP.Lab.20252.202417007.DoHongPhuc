@@ -30,7 +30,7 @@
                             <MenuItem mnemonicParsing="false" text="Add DVD" />
                         </items>
                       </Menu>
-                    <MenuItem mnemonicParsing="false" text="View Store" />
+                      <MenuItem fx:id="menuViewStore" mnemonicParsing="false" onAction="#btnViewStorePressed" text="View Store" />
                       <MenuItem mnemonicParsing="false" text="View Cart" />
                   </items>
                 </Menu>
@@ -96,10 +96,10 @@
             <HBox alignment="CENTER">
                <children>
                   <Label style="-fx-font-size: 24px;" text="Total: " />
-                  <Label style="-fx-font-size: 24px;" text="0 $" textFill="AQUA" />
+                  <Label fx:id="lblTotal" style="-fx-font-size: 24px;" text="0 $" textFill="AQUA" />
                </children>
             </HBox>
-            <Button mnemonicParsing="false" style="-fx-background-color: red; -fx-font-size: 24px;" text="Place Order" textFill="WHITE" />
+            <Button fx:id="btnPlaceOrder" mnemonicParsing="false" onAction="#btnPlaceOrderPressed" style="-fx-background-color: red; -fx-font-size: 24px;" text="Place Order" textFill="WHITE" />
          </children>
       </VBox>
    </right>
